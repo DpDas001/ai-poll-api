@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI & Copilot Poll</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    fieldset {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      background: #fff;
+    }
+    legend {
+      font-weight: bold;
+      padding: 0 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #0078d4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      padding: 15px;
+      background: #e0f7fa;
+      border-left: 5px solid #0078d4;
+    }
+  </style>
+</head>
+<body>
+  <h2>🧠 AI & Copilot Poll</h2>
+  <form id="pollForm">
+    <fieldset>
+      <legend>1. How often do you use AI tools like GitHub Copilot?</legend>
+      <label><input type="radio" name="q1" value="Every day—it’s my coding companion"> Every day—it’s my coding companion</label><br>
+      <label><input type="radio" name="q1" value="A few times a week"> A few times a week</label><br>
+      <label><input type="radio" name="q1" value="Occasionally, when I’m stuck"> Occasionally, when I’m stuck</label><br>
+      <label><input type="radio" name="q1" value="Never tried it yet"> Never tried it yet</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. What’s the biggest benefit you’ve experienced from using Copilot?</legend>
+      <label><input type="radio" name="q2" value="Faster code generation"> Faster code generation</label><br>
+      <label><input type="radio" name="q2" value="Writing better tests"> Writing better tests</label><br>
+      <label><input type="radio" name="q2" value="Learning new patterns and APIs"> Learning new patterns and APIs</label><br>
+      <label><input type="radio" name="q2" value="Reducing cognitive load"> Reducing cognitive load</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. Would you trust Copilot to write production-level unit tests without manual review?</legend>
+      <label><input type="radio" name="q3" value="Yes, with high confidence"> Yes, with high confidence</label><br>
+      <label><input type="radio" name="q3" value="Yes, but I always review"> Yes, but I always review</label><br>
+      <label><input type="radio" name="q3" value="Only for boilerplate or simple logic"> Only for boilerplate or simple logic</label><br>
+      <label><input type="radio" name="q3" value="No, I prefer writing tests myself"> No, I prefer writing tests myself</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>4. Which task do you wish Copilot could handle even better?</legend>
+      <label><input type="radio" name="q4" value="Refactoring legacy code"> Refactoring legacy code</label><br>
+      <label><input type="radio" name="q4" value="Explaining complex code"> Explaining complex code</label><br>
+      <label><input type="radio" name="q4" value="Generating architecture diagrams"> Generating architecture diagrams</label><br>
+      <label><input type="radio" name="q4" value="Writing secure and optimized queries"> Writing secure and optimized queries</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>5. How do you see AI tools like Copilot evolving in the next 2 years?</legend>
+      <label><input type="radio" name="q5" value="Becoming fully autonomous coding agents"> Becoming fully autonomous coding agents</label><br>
+      <label><input type="radio" name="q5" value="Acting as intelligent reviewers and mentors"> Acting as intelligent reviewers and mentors</label><br>
+      <label><input type="radio" name="q5" value="Integrating deeply into CI/CD and DevOps"> Integrating deeply into CI/CD and DevOps</label><br>
+      <label><input type="radio" name="q5" value="Plateauing without major breakthroughs"> Plateauing without major breakthroughs</label>
+    </fieldset>
+
+    <button type="submit">Submit Poll</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('pollForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const result = document.getElementById('result');
+      const answers = ['q1', 'q2', 'q3', 'q4', 'q5'].map(q => {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        return selected ? selected.value : 'No answer';
+      });
+      result.innerHTML = `
+        <h3>📊 Your Responses:</h3>
+        <ul>
+          <li><strong>Q1:</strong> ${answers[0]}</li>
+          <li><strong>Q2:</strong> ${answers[1]}</li>
+          <li><strong>Q3:</strong> ${answers[2]}</li>
+          <li><strong>Q4:</strong> ${answers[3]}</li>
+          <li><strong>Q5:</strong> ${answers[4]}</li>
+        </ul>
+      `;
+    });
+  </script>
+</body>
+</html>
